@@ -24,3 +24,5 @@ app.post('/todos', (req, res) => {
 app.listen(3000, () => {
   console.log('3000포트에서 시작되었습니다.');
 });
+
+module.exports = {app};
