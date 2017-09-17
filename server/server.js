@@ -35,19 +35,19 @@ app.get('/todos/:id', (req, res) => {
   var id = req.params.id;
 
   // id 유효성 -> isValid 사용
-  // 404 : 빈것을 보낸다
   if (!ObjectID.isValid(id)) {
+    // 404 - 잘못된 요청으로 처리
     return res.status(404).send();
   }
 
   Todo.findById(id).then((todo) => {
     if (!todo) {
-      return res.status(404).send(); // 찾을 수 없는 오류
+      return res.status(404).send(); // 404 - 찾을 수 없는 오류
     }
 
     res.send({todo});
   }).catch((e) => {
-    res.status(400).send(); // 잘못된 요청
+    res.status(400).send(); // 400 - 잘못된 요청
   });
 });
 
