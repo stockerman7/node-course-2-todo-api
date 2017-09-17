@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var {ObjectID} = require('mongodb');
 
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/todo');
@@ -26,6 +27,27 @@ app.get('/todos', (req, res) => {
     res.send({todos});
   }, (e) => {
     res.status(400).send(e);
+  });
+});
+
+// GET /todos/182798172
+app.get('/todos/:id', (req, res) => {
+  var id = req.params.id;
+
+  // id 유효성 -> isValid 사용
+  // 404 : 빈것을 보낸다
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+
+  Todo.findById(id).then((todo) => {
+    if (!todo) {
+      return res.status(404).send(); // 찾을 수 없는 오류
+    }
+
+    res.send({todo});
+  }).catch((e) => {
+    res.status(400).send(); // 잘못된 요청
   });
 });
 
