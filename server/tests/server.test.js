@@ -85,7 +85,7 @@ describe('GET /todos/:id', () => {
   });
 
   it('todo를 찾을 수 없습니다. 404 코드를 반환', (done) => {
-    var hexId = new ObjectID().toHexString();
+    var hexId = new ObjectID().toHexString(); // fake ID
 
     request(app)
       .get(`/todos/${hexId}`)
