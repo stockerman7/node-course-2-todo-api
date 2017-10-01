@@ -52,6 +52,25 @@ app.get('/todos/:id', (req, res) => {
   });
 });
 
+app.delete('/todos/:id', (req, res) => {
+  // id 조회
+  var id = req.params.id;
+  // id 유효성 확인 -> 유효하지 않다면? 404 반환
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+  // id로 todo 제거
+  Todo.findByIdAndRemove(id).then((todo) => {
+    // doc 없다면, 404 반환
+    if (!todo) {
+      return res.status(404).send();
+    }
+    res.send(todo); // 성공
+  }).catch((e) => { // 에러
+    res.status(400).send();
+  });
+})
+
 app.listen(port, () => {
   console.log(`${port}포트가 시작되었습니다.`);
 });
