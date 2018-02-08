@@ -65,7 +65,7 @@ app.delete('/todos/:id', (req, res) => {
     if (!todo) {
       return res.status(404).send();
     }
-    res.send(todo); // 성공
+    res.send({todo}); // 성공serv
   }).catch((e) => { // 에러
     res.status(400).send();
   });

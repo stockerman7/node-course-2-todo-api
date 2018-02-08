@@ -101,3 +101,36 @@ describe('GET /todos/:id', () => {
       .end(done);
   });
 });
+
+describe('DELETE /todos/:id', () => {
+  it('todo를 지워야 합니다.', (done) => {
+    var hexId = todos[1]._id.toHexString();
+
+    request(app)
+      .delete(`/todos/${hexId}`)
+      .expect(200)
+      .expect((res) => {
+        expect(res.body.todo._id).toBe(hexId);
+      })
+      .end((err, res) => {
+        if (error) {
+          return done(err);
+        }
+
+        Todo.findById(hexId).then((todo) => {
+          expect(todo).toNotExist();
+          done();
+        }).catch((e) => done(e));
+        // query database using findById toNotExist
+        // expect(null).toNotExist();
+      });
+  });
+
+  it('todo를 찾을 수없는 경우 404를 반환해야합니다.', (done) => {
+
+  });
+
+  it('객체 ID가 유효하지 않은 경우 404를 반환해야합니다.', (done) => {
+
+  });
+});
