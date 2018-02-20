@@ -1,36 +1,37 @@
+// const MongoClient = require('mongodb').MongoClient; // db 클라이언트 생성
 const {MongoClient, ObjectID} = require('mongodb');
 
-// 1. MongoDB 접속
-// 2. MongoDB Database 설정: TodoApp
-MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
+// 현재 서버역할은 내 컴퓨터, 즉 mongodb://localhost:27017에서 담당하고 있다.
+// 결국 client, server 둘 다 내 컴퓨터에서 동작한다.
+MongoClient.connect(`mongodb://localhost:27017/TodoApp`, (err, db) => {
   if (err) {
-    return console.log('MongoDB 서버에 접속할 수 없습니다.');
+    console.log(`MongoDB 서버에 접속할 수 없습니다.`);
+  } else {
+    console.log(`MongoDB 서버에 접속했습니다.`);
   }
-  console.log('MongoDB 서버에 접속했습니다.');
-  // 3. Collection 설정: Todos
-  // 4. Document 추가
+
   // db.collection('Todos').insertOne({
-  //   text: '어떤 작업',
-  //   completed: false
+  //   text: '무엇이든 한다',
+  //   complete: false
   // }, (err, result) => {
   //   if (err) {
-  //     return console.log('할 일을 추가할 수 없습니다.');
+  //     console.log('Todo가 추가되지 않습니다.', err);
   //   }
+  //
   //   console.log(JSON.stringify(result.ops, undefined, 2));
   // });
 
-  // Users에 새로운 document를 추가
+  // Users라는 새로운 doc 추가 (name, age, location)
   // db.collection('Users').insertOne({
   //   name: 'Mins',
-  //   age: 37,
-  //   location: '서울 관악구 인헌동'
+  //   age: 38,
+  //   location: '서울 관악구 낙성대역8길'
   // }, (err, result) => {
   //   if (err) {
-  //     return console.log('user를 추가하지 못했습니다.', err);
+  //     console.log('사용자 정보가 추가되지 않습니다.', err);
   //   }
-  //
   //   console.log(result.ops[0]._id.getTimestamp());
   // });
 
-  db.close(); // db 작업 완료
+  db.close(); // 서버 접속 종료
 });

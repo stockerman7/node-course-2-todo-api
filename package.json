@@ -4,25 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "test": "mocha server/**/*.test.js",
-    "test-watch": "nodemon --exec 'npm test'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": "6.11.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stockerman7/node-course-2-todo-api.git"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "mongodb": "^2.2.5",
-    "mongoose": "^4.5.9"
+  "bugs": {
+    "url": "https://github.com/stockerman7/node-course-2-todo-api/issues"
   },
-  "devDependencies": {
-    "expect": "^1.20.2",
-    "mocha": "^3.0.2",
-    "nodemon": "^1.10.2",
-    "supertest": "^2.0.0"
+  "homepage": "https://github.com/stockerman7/node-course-2-todo-api#readme",
+  "dependencies": {
+    "mongodb": "^2.2.5"
   }
 }
