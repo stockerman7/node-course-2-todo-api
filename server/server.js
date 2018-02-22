@@ -21,6 +21,14 @@ app.post('/todos', (req, res) => {
   });
 });
 
+app.get('/todos', (req, res) => {
+  Todo.find().then((todos) => {
+    res.send({todos});
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
 app.listen(3000, () => {
   console.log(`3000 포트로 시작되었습니다.`);
 });
