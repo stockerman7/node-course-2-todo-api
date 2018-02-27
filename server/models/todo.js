@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+// Todo Model 추상화
 var Todo = mongoose.model('Todo', {
   text: {
     type: String,
