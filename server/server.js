@@ -7,6 +7,7 @@ var {Todo} = require('./models/todo');
 var {User} = require('./models/user');
 
 var app = express(); // 서버 App 생성
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json()); // 요청 매개변수를 추출하려면 필요, json 형식
 
@@ -54,8 +55,8 @@ app.get('/todos/:id', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-  console.log(`3000 포트로 시작되었습니다.`);
+app.listen(port, () => {
+  console.log(`${port} 포트로 시작되었습니다.`);
 });
 
 module.exports = {app};

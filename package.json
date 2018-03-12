@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stockerman7/node-course-2-todo-api.git"
+  },
+  "engines": {
+    "node": "8.9.4"
   },
   "author": "",
   "license": "ISC",
